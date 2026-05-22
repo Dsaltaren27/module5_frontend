@@ -20,7 +20,6 @@ jobs:
 
     - name: Install dependencies and Build
       run: |
-        cd module5_frontend
         npm install
         npm run build -- --configuration=production
 
@@ -33,7 +32,7 @@ jobs:
 
     - name: Deploy to S3
       run: |
-        aws s3 sync module5_frontend/dist/ s3://url-shortener-frontend-parcial3 --delete
+        aws s3 sync dist/ s3://url-shortener-frontend-parcial3 --delete
 
     - name: Invalidate CloudFront Cache
       run: |
