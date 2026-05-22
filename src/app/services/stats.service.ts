@@ -2,22 +2,27 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StatsService {
+  // Ajusta esta URL base según el API Gateway de tu equipo
+  private apiUrl = 'https://modulo1.execute-api.us-east-1.amazonaws.com/stats';
 
-  private readonly apiUrl = 'https://modulo1.execute-api.us-east-1.amazonaws.com';
-
-  constructor() {}
-
-
-  async createShortUrl(longUrl: string): Promise<{ shortCode: string }> {
-    const response = await axios.post(`${this.apiUrl}/shorten`, { longUrl });
-    return response.data;
+  async createShortUrl(longUrl: string): Promise<any> {
+    try {
+      const response = await axios.post(this.apiUrl, { longUrl: longUrl.trim() });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   }
 
-  async getStatsByCode(shortCode: string): Promise<any> {
-    const response = await axios.get(`${this.apiUrl}/stats/${shortCode}`);
-    return response.data;
+  async getStatsByCode(code: string): Promise<any> {
+    try {
+      const response = await axios.get(`${this.apiUrl}/${code.trim()}`);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   }
 }

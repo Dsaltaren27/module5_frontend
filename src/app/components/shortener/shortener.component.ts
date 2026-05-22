@@ -17,7 +17,7 @@ export class ShortenerComponent {
   errorMessage: string | null = null;
   isCopied: boolean = false;
 
-  constructor(private StatsService: StatsService) {}
+  constructor(private statsService: StatsService) {}
 
   async generateShortUrl(): Promise<void> {
     const targetUrl = this.longUrl.trim();
@@ -29,7 +29,7 @@ export class ShortenerComponent {
     this.isCopied = false;
 
     try {
-      const response = await this.StatsService.createShortUrl(targetUrl);
+      const response = await this.statsService.createShortUrl(targetUrl);
       const baseUrl = window.location.origin; 
       this.shortenedUrl = `${baseUrl}/short/${response.shortCode}`;
       this.longUrl = ''; 

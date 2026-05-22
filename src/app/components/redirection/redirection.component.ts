@@ -19,7 +19,7 @@ export class RedirectionComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private StatsService: StatsService
+    private statsService: StatsService
   ) {}
 
   ngOnInit(): void {
@@ -34,9 +34,18 @@ export class RedirectionComponent implements OnInit, OnDestroy {
   }
 
   async verifyAndRedirect(): Promise<void> {
+    this.isLoading = true;
+    this.hasError = false;
+
     try {
-      const data = await this.StatsService.getStatsByCode(this.shortCode);
+      const data = await this.statsService.getStatsByCode(this.shortCode);
+      this.isLoading = false;
       const destinationUrl = data.longUrl;
+
+      if (!destinationUrl) {
+        this.hasError = true;
+        return;
+      }
 
       this.timerInterval = setInterval(() => {
         this.countdown--;
