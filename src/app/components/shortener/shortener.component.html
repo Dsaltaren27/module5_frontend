@@ -1,0 +1,75 @@
+<div class="min-w-screen min-h-screen flex flex-col items-center justify-center bg-slate-50 px-4">
+  <div class="max-w-xl w-full bg-white rounded-2xl shadow-xl p-8 border border-slate-100">
+    
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
+        Cortador Serverless de URLs
+      </h1>
+      <p class="text-slate-500">
+        Genera enlaces rápidos, seguros y monitoreados en AWS Cloud.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-semibold text-slate-700 mb-2">
+          Pega tu URL larga aquí
+        </label>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input 
+            type="url" 
+            [(ngModel)]="longUrl"
+            placeholder="https://ejemplo.com/un-enlace-muy-largo-y-complejo"
+            class="flex-1 px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white text-slate-800 transition duration-150"
+            [disabled]="isLoading"
+          />
+          <button 
+            (click)="generateShortUrl()"
+            [disabled]="isLoading || !longUrl.trim()"
+            class="bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 text-white font-semibold px-6 py-3 rounded-xl transition duration-150 shadow-md flex items-center justify-center gap-2"
+          >
+            @if (isLoading) {
+              <div class="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white"></div>
+              <span>Procesando...</span>
+            } @else {
+              <span>Acortar Link</span>
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+
+    @if (errorMessage) {
+      <div class="mt-4 p-4 bg-red-50 rounded-xl border border-red-100 text-red-700 text-sm font-medium">
+        ⚠️ {{ errorMessage }}
+      </div>
+    }
+
+    @if (shortenedUrl) {
+      <div class="mt-8 p-5 bg-indigo-50/50 rounded-2xl border border-indigo-100 animate-fadeIn">
+        <label class="block text-xs font-bold text-indigo-700 uppercase tracking-wider mb-2">
+          ¡Tu enlace corto está listo!
+        </label>
+        <div class="flex items-center justify-between bg-white p-3 rounded-xl border border-slate-200 shadow-sm gap-4">
+          <span class="font-mono text-indigo-600 font-semibold overflow-x-auto whitespace-nowrap select-all py-1 px-2">
+            {{ shortenedUrl }}
+          </span>
+          <button 
+            (click)="copyToClipboard()"
+            [class.bg-emerald-600]="isCopied"
+            [class.hover:bg-emerald-700]="isCopied"
+            [class.bg-slate-800]="!isCopied"
+            [class.hover:bg-slate-900]="!isCopied"
+            class="text-white text-sm font-semibold px-4 py-2 rounded-lg transition duration-150 shadow flex-shrink-0"
+          >
+            {{ isCopied ? '¡Copiado!' : 'Copiar' }}
+          </button>
+        </div>
+        <p class="text-xs text-slate-400 mt-2 text-center">
+          Este link redirigirá de manera segura a través de la pantalla de verificación del Módulo 5.
+        </p>
+      </div>
+    }
+
+  </div>
+</div>
