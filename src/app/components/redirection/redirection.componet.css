@@ -1,0 +1,136 @@
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  items-center: center;
+  justify-content: center;
+  background-color: #f8fafc; /* bg-slate-50 */
+  padding-left: 16px;
+  padding-right: 16px;
+  font-family: sans-serif;
+}
+
+/* --- ESTADO DE CARGA --- */
+.card-loader {
+  text-align: center;
+  padding: 32px;
+  background-color: white;
+  border-radius: 16px; /* rounded-2xl */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-xl */
+  max-width: 28rem; /* max-w-md */
+  width: 100%;
+  border: 1px solid #f1f5f9; /* border-slate-100 */
+}
+
+.spinner-element {
+  animation: spin 1s linear infinite;
+  border-radius: 9999px;
+  height: 64px; /* h-16 */
+  width: 64px; /* w-16 */
+  border-top-width: 4px;
+  border-bottom-width: 4px;
+  border-color: #6366f1; /* border-indigo-600 */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 24px;
+}
+
+.loader-title {
+  size: 24px;
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700; /* font-bold */
+  color: #1e293b; /* text-slate-800 */
+  margin-bottom: 8px;
+}
+
+.loader-subtitle {
+  color: #64748b; /* text-slate-500 */
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.countdown-badge {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 800; /* font-extrabold */
+  color: #6366f1; /* text-indigo-600 */
+  background-color: #f5f3ff; /* bg-indigo-50 */
+  display: inline-block;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 9999px; /* rounded-full */
+}
+
+/* --- ESTADO DE ERROR --- */
+.card-error {
+  text-align: center;
+  padding: 32px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  max-width: 28rem;
+  width: 100%;
+  border-top: 8px solid #ef4444; /* border-t-8 border-red-500 */
+}
+
+.error-icon {
+  color: #ef4444;
+  font-size: 3.75rem; /* text-6xl */
+  margin-bottom: 16px;
+}
+
+.error-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a; /* text-slate-900 */
+  margin-bottom: 8px;
+}
+
+.error-body {
+  color: #475569; /* text-slate-600 */
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.code-highlight {
+  font-family: monospace;
+  background-color: #f1f5f9; /* bg-slate-100 */
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 4px;
+  color: #dc2626; /* text-red-600 */
+  font-weight: 700;
+}
+
+.back-button {
+  display: inline-block;
+  background-color: #6366f1; /* bg-indigo-600 */
+  color: white;
+  font-weight: 600;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 12px; /* rounded-xl */
+  text-decoration: none;
+  transition-property: color, background-color;
+  transition-duration: 200ms;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+  background-color: #4f46e5; /* hover:bg-indigo-700 */
+}
+
+/* Animación del Spinner */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

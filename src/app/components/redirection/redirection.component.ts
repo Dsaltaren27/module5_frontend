@@ -8,7 +8,7 @@ import { StatsService } from '../../services/stats.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './redirection.component.html',
-  styleUrls: ['./redirection.component.css']
+  styleUrls: ['./redirection.componet.css']
 })
 export class RedirectionComponent implements OnInit, OnDestroy {
   shortCode: string = '';
