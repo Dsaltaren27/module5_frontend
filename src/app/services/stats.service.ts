@@ -5,7 +5,7 @@ import axios from 'axios';
   providedIn: 'root',
 })
 export class StatsService {
-  private apiUrl = 'https://39xwa8n693.execute-api.us-east-1.amazonaws.com';
+  private apiUrl = 'https://z0aox8j927.execute-api.us-east-1.amazonaws.com';
 
   getApiUrl(): string {
     return this.apiUrl;
