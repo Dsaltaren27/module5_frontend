@@ -34,8 +34,7 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          aws s3 sync dist/$(node -e "console.log(require('./package.json').name)")/browser/ \
-            s3://${{ secrets.S3_BUCKET_NAME }} --delete
+                 aws s3 sync dist/module5_frontend/browser/ s3://${{ secrets.S3_BUCKET_NAME }} --delete
 
       - name: Invalidate CloudFront Cache
         run: |
