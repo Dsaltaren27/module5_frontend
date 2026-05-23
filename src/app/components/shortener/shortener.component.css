@@ -1,8 +1,233 @@
+/* --- CONTENEDOR DE LA PÁGINA (flex, bg-slate-50) --- */
+.shortener-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc; /* bg-slate-50 */
+  padding-left: 16px;
+  padding-right: 16px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+/* --- TARJETA PRINCIPAL (max-w-xl, rounded-2xl, shadow-xl) --- */
+.shortener-card {
+  width: 100%;
+  max-width: 576px; /* max-w-xl */
+  background-color: white;
+  border-radius: 16px; /* rounded-2xl */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-xl */
+  padding: 32px; /* p-8 */
+  border: 1px solid #f1f5f9; /* border-slate-100 */
+  box-sizing: border-box;
+}
+
+/* --- ENCABEZADO --- */
+.shortener-header {
+  text-align: center;
+  margin-bottom: 32px; /* mb-8 */
+}
+
+.shortener-title {
+  font-size: 30px; /* text-3xl */
+  font-weight: 800; /* font-extrabold */
+  color: #0f172a; /* text-slate-900 */
+  letter-spacing: -0.5px; /* tracking-tight */
+  margin: 0 0 8px 0;
+}
+
+.shortener-subtitle {
+  color: #64748b; /* text-slate-500 */
+  margin: 0;
+  font-size: 15px;
+}
+
+/* --- FORMULARIO --- */
+.shortener-form-space {
+  margin-bottom: 16px;
+}
+
+.shortener-label {
+  display: block;
+  text-transform: none;
+  font-size: 14px; /* text-sm */
+  font-weight: 600; /* font-semibold */
+  color: #334155; /* text-slate-700 */
+  margin-bottom: 8px;
+}
+
+.shortener-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* gap-3 */
+}
+
+@media (min-width: 640px) {
+  .shortener-input-group {
+    flex-direction: row;
+  }
+}
+
+/* INPUT TEXT (bg-slate-50, focus:ring-indigo-500) --- */
+.shortener-input {
+  flex: 1;
+  padding: 12px 16px;
+  background-color: #f8fafc; /* bg-slate-50 */
+  border: 1px solid #e2e8f0; /* border-slate-200 */
+  border-radius: 12px; /* rounded-xl */
+  color: #1e293b; /* text-slate-800 */
+  font-size: 14px;
+  outline: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.shortener-input:focus {
+  border-color: #6366f1;
+  background-color: white;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.shortener-input:disabled {
+  background-color: #e2e8f0;
+  cursor: not-allowed;
+}
+
+/* BOTÓN PRINCIPAL (bg-indigo-600) --- */
+.shortener-btn-submit {
+  background-color: #6366f1; /* bg-indigo-600 */
+  color: white;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px; /* rounded-xl */
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2);
+  transition: background-color 0.15s;
+  white-space: nowrap;
+}
+
+.shortener-btn-submit:hover:not(:disabled) {
+  background-color: #4f46e5; /* hover:bg-indigo-700 */
+}
+
+.shortener-btn-submit:disabled {
+  background-color: #cbd5e1; /* disabled:bg-slate-300 */
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ANIMACIÓN SPINNER --- */
+.shortener-spinner {
+  animation: spin 1s linear infinite;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  border: 2px solid white;
+  border-top-color: transparent;
+}
+
+/* --- BANNER DE ERROR --- */
+.shortener-error-banner {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: #fef2f2; /* bg-red-50 */
+  border: 1px solid #fee2e2; /* border-red-100 */
+  border-radius: 12px;
+  color: #b91c1c; /* text-red-700 */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* --- CAJA DE RESULTADOS (bg-indigo-50/50) --- */
+.shortener-result-box {
+  margin-top: 32px; /* mt-8 */
+  padding: 20px; /* p-5 */
+  background-color: rgba(245, 243, 255, 0.5); /* bg-indigo-50/50 */
+  border: 1px solid #e0e7ff; /* border-indigo-100 */
+  border-radius: 16px; /* rounded-2xl */
+  animation: fadeIn 0.3s ease-out;
+}
+
+.shortener-result-label {
+  display: block;
+  font-size: 12px; /* text-xs */
+  font-weight: 700; /* font-bold */
+  color: #4338ca; /* text-indigo-700 */
+  text-transform: uppercase;
+  letter-spacing: 0.1em; /* tracking-wider */
+  margin-bottom: 8px;
+}
+
+.shortener-result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 12px;
+  border-radius: 12px; /* rounded-xl */
+  border: 1px solid #e2e8f0;
+  gap: 16px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.shortener-url-display {
+  font-family: monospace;
+  color: #4f46e5; /* text-indigo-600 */
+  font-weight: 600;
+  overflow-x: auto;
+  white-space: nowrap;
+  user-select: all;
+  padding: 4px 8px;
+}
+
+/* BOTONES DINÁMICOS DE COPIADO --- */
+.shortener-btn-copy {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  flex-shrink: 0;
+}
+
+.bg-slate {
+  background-color: #1e293b; /* bg-slate-800 */
+}
+.bg-slate:hover {
+  background-color: #0f172a; /* hover:bg-slate-900 */
+}
+
+.bg-emerald {
+  background-color: #05966c; /* bg-emerald-600 */
+}
+.bg-emerald:hover {
+  background-color: #047857; /* hover:bg-emerald-700 */
+}
+
+.shortener-result-footer {
+  font-size: 12px; /* text-xs */
+  color: #94a3b8; /* text-slate-400 */
+  margin: 8px 0 0 0;
+  text-align: center;
+}
+
+/* --- KEYFRAMES --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-out forwards;
 }

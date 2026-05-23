@@ -1,54 +1,49 @@
-<div style="min-height: 100vh; background-color: #f8fafc; padding: 32px; font-family: sans-serif; color: #334155; display: flex; flex-direction: column; justify-content: center; align-items: center; box-sizing: border-box;">
+<div class="redirection-container">
   
   @if (isLoading) {
-    <div style="text-align: center; padding: 32px; background-color: white; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); width: 100%; max-width: 448px; animation: fadeIn 0.3s ease-out;">
+    <div class="status-card text-center fade-in">
       
-      <div style="height: 64px; width: 64px; border: 4px solid #f1f5f9; border-top-color: #6366f1; border-bottom-color: #6366f1; border-radius: 9999px; margin: 0 auto 24px auto; animation: spin 1s linear infinite;"></div>
+      <div class="spinner-loader"></div>
       
-      <h1 style="font-size: 24px; font-weight: 700; color: #1e293b; margin: 0 0 8px 0;">
+      <h1 class="card-title">
         Redireccionando de forma segura
       </h1>
-      <p style="color: #64748b; font-size: 14px; margin: 0 0 24px 0; line-height: 1.5;">
+      
+      <p class="card-subtitle">
         Estamos validando el enlace en la infraestructura Cloud Serverless...
       </p>
       
-      <div style="font-size: 36px; font-weight: 800; color: #6366f1; background-color: #f5f3ff; display: inline-block; padding: 8px 24px; border-radius: 9999px;">
+      <div class="countdown-badge">
         {{ countdown }}s
       </div>
     </div>
   }
 
   @else if (hasError) {
-    <div style="text-align: center; padding: 32px; background-color: white; border-radius: 16px; border: 1px solid #e2e8f0; border-top: 8px solid #ef4444; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); width: 100%; max-width: 448px; animation: fadeIn 0.3s ease-out;">
+    <div class="status-card card-error text-center fade-in">
       
-      <div style="color: #ef4444; font-size: 60px; margin-bottom: 16px;">⚠️</div>
+      <div class="error-icon-alert">⚠️</div>
       
-      <h1 style="font-size: 24px; font-weight: 700; color: #0f172a; margin: 0 0 8px 0;">
+      <h1 class="card-title">
         ¡Enlace no encontrado!
       </h1>
-      <p style="color: #475569; font-size: 14px; margin: 0 0 24px 0; line-height: 1.5;">
+      
+      <p class="card-subtitle error-text-body">
         El código corto 
-        <span style="font-family: monospace; background-color: #f1f5f9; padding: 4px 8px; border-radius: 4px; color: #dc2626; font-weight: 700;">
+        <span class="shortcode-badge">
           {{ shortCode }}
         </span> 
         no existe en la base de datos de DynamoDB o ha expirado.
       </p>
       
-      <a routerLink="/" style="display: inline-block; background-color: #6366f1; color: white; font-weight: 600; font-size: 14px; padding: 12px 24px; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 6px -1px rgba(99,102,241,0.2); transition: background-color 0.2s;">
+      <a routerLink="/" class="back-home-btn">
         Volver al Inicio
       </a>
     </div>
   }
 
-</div>
+  <footer class="system-footer">
+    Módulo 5 - Enrutamiento Dinámico & Edge Failover (AWS CloudFront)
+  </footer>
 
-<style>
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
+</div>

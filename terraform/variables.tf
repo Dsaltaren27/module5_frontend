@@ -6,13 +6,12 @@ variable "aws_region" {
 
 variable "bucket_name" {
   type        = string
-  description = "Nombre único a nivel global para el bucket de S3 que alojará la SPA de Angular"
-  default     = "url-shortener-frontend-parcial3"
+  description = "Nombre único a nivel global para el bucket S3 que alojará la SPA de Angular"
 }
 
 variable "environment" {
   type        = string
-  description = "Ambiente de despliegue (ej. dev, qa, prod)"
+  description = "Ambiente de despliegue "
   default     = "prod"
 }
 

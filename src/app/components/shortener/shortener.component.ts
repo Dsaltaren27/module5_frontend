@@ -23,6 +23,14 @@ export class ShortenerComponent {
     const targetUrl = this.longUrl.trim();
     if (!targetUrl) return;
 
+    // Validar que sea una URL válida antes de enviar al backend
+    try {
+      new URL(targetUrl);
+    } catch {
+      this.errorMessage = 'Por favor ingresa una URL válida (debe incluir https://).';
+      return;
+    }
+
     this.isLoading = true;
     this.errorMessage = null;
     this.shortenedUrl = null;
@@ -30,9 +38,14 @@ export class ShortenerComponent {
 
     try {
       const response = await this.statsService.createShortUrl(targetUrl);
-      const baseUrl = window.location.origin; 
-      this.shortenedUrl = `${baseUrl}/short/${response.shortCode}`;
-      this.longUrl = ''; 
+      const code = response.shortCode || response.code;
+
+      if (code) {
+        this.shortenedUrl = this.statsService.ShortUrl(code);
+        this.longUrl = '';
+      } else {
+        this.errorMessage = 'La respuesta del servidor no contiene un código válido.';
+      }
     } catch (error: any) {
       this.errorMessage = 'No se pudo generar el enlace corto. Inténtalo de nuevo.';
     } finally {
